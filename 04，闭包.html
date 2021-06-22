@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    引入react-->
+    <!--    操作虚拟dom-->
+    <script src="./JS/react.development.js"></script>
+    <!--    虚拟dom转化成真实dom-->
+    <script src="./JS/react-dom.development.js"></script>
+    <!-- React的语法转换，将ES6转ES5，JSX转JS -->
+    <script src="./JS/babel.min.js"></script>
+</head>
+<body>
+<script>
+
+    function f1() {
+        let num=0;
+        const f2= function(){
+            num++;
+            console.log(num)
+        }
+        return f2;
+    }
+    let f=f1();
+    f();
+    f();
+    f();
+    f();
+   console.dir('f1:');
+   console.dir(f1);
+   console.dir('f');
+   console.dir(f);
+
+
+</script>
+
+</body>
+</html>
