@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    引入react-->
+    <!--    操作虚拟dom-->
+    <script src="./JS/react.development.js"></script>
+    <!--    虚拟dom转化成真实dom-->
+    <script src="./JS/react-dom.development.js"></script>
+    <!-- React的语法转换，将ES6转ES5，JSX转JS -->
+    <script src="./JS/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+    class Person extends React.Component {
+        constructor(props) {
+            super(props);
+            //将class内定义的方法的this指向实例对象
+            this.say = this.say.bind(this);
+            this.state = {
+                isPerson: true
+            }
+        }
+
+        say() {
+            this.setState({
+                isPerson: !this.state.isPerson
+            })
+        }
+
+        render() {
+            return (
+                <h1 onClick={this.say}>{this.state.isPerson?'人':'狗'}</h1>
+            )
+        }
+    }
+    ReactDOM.render(<Person/>, document.getElementById('app'))
+    const p1 = new Person();
+    console.log(p1);
+    // p1.say()
+    // p1.say();  say是修改state状态的方法了，此时这个person组件并未被安装，所以无法调用 会出现warning警告，
+    // 也就是说设置state状态只能在虚拟dom里设置 所以与此有关的方法只有在虚拟dom里面设置，之后成功渲染才能够别调用成功
+
+
+</script>
+
+</body>
+</html>

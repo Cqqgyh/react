@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    引入react-->
+    <!--    操作虚拟dom-->
+    <script src="./JS/react.development.js"></script>
+    <!--    虚拟dom转化成真实dom-->
+    <script src="./JS/react-dom.development.js"></script>
+    <!-- React的语法转换，将ES6转ES5，JSX转JS -->
+    <script src="./JS/babel.min.js"></script>
+</head>
+<body>
+<script>
+class Person {
+    constructor(name,age) {
+        this.name = name;
+        this.age = age;
+    }
+
+}
+const p1=new Person();
+console.log(p1);
+
+
+</script>
+
+</body>
+</html>

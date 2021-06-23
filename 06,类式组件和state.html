@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    引入react-->
+    <!--    操作虚拟dom-->
+    <script src="./JS/react.development.js"></script>
+    <!--    虚拟dom转化成真实dom-->
+    <script src="./JS/react-dom.development.js"></script>
+    <!-- React的语法转换，将ES6转ES5，JSX转JS -->
+    <script src="./JS/babel.min.js"></script>
+    <!-- React对prop-types进行管理 -->
+    <script src="./JS/babel.min.js"></script>
+
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+    class Person extends React.Component{
+        //不在constructor里面设置，是直接挂载到实例对象上的
+        state={
+            isPerson:true
+        }
+        //定义方法，直接用箭头函数，这样可以在底下避免this丢失的问题
+        say= () => {
+            //只能通过setState方法改变state的值，改变后页面会根据state的状态进行局部刷新
+            this.setState({
+                isPerson:!this.state.isPerson
+            })
+        }
+
+        render(){
+            return (
+                <h1 id="h1" onClick={this.say}>我是{this.state.isPerson?'人':'狗'}</h1>
+            )
+        }
+
+    }
+    ReactDOM.render(<Person/>,document.getElementById('app'))
+
+
+</script>
+
+</body>
+</html>
