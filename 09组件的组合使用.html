@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    引入react-->
+    <!--    操作虚拟dom-->
+    <script src="./JS/react.development.js"></script>
+    <!--    虚拟dom转化成真实dom-->
+    <script src="./JS/react-dom.development.js"></script>
+    <!-- React的语法转换，将ES6转ES5，JSX转JS -->
+    <script src="./JS/babel.min.js"></script>
+    <!-- React对prop-types进行管理 -->
+    <script src="./JS/prop-types.js"></script>
+</head>
+<body>
+<div id="wrap"></div>
+<script type="text/babel">
+
+    class App extends React.Component {
+        state={
+            todoArr:['吃饭','睡觉','打豆豆']
+        }
+
+        todoAdd = (data) => {
+            const {todoArr} =this.state;
+            todoArr.unshift(data)
+            this.setState({
+                todoArr:todoArr
+            })
+        }
+
+
+        render() {
+
+            return (
+               <div>
+                   <h1>TODO LIST</h1>
+                   <Add todoAdd={this.todoAdd}/>
+                   <ShowList  todoArr={this.state.todoArr}  />
+
+               </div>
+            )
+
+        }
+
+    }
+
+
+    class Add extends React.Component {
+        myRef=React.createRef();
+        //增添数据的方法
+        getUserInput = () => {
+            // console.log(1);
+            // 1.获取用户输入的数据
+            const userInput = this.myRef.current.value;
+            // console.log(this.myRef.current.value);
+            // 2.判断数据不为空
+            // console.log(Boolean(userInput.trim()));
+            if(!userInput.trim())return;
+            // 3.将用户输入的数据添加到状态中
+            this.props.todoAdd(userInput)
+            //4.清空输入框
+            this.myRef.current.value='';
+
+        }
+
+        render() {
+            // console.log(this)
+            const {todoAdd}=this.props;
+            return (
+               <div>
+                   <input type="text" ref={this.myRef}/>
+                   <button onClick={this.getUserInput}>Add#100</button>
+               </div>
+
+
+            )
+
+        }
+
+    }
+
+    class ShowList extends React.Component {
+
+        render() {
+            const {todoArr}=this.props;
+            console.log(todoArr);
+            return (
+                <ul>
+                    {todoArr.map((item,index) => {
+                        return <li key={index}>{item}</li>
+                    })}
+                </ul>
+
+            )
+
+        }
+
+    }
+
+
+
+
+    ReactDOM.render(<App/>,document.getElementById('wrap'))
+
+
+</script>
+</body>
+</html>
