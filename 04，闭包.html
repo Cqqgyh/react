@@ -30,9 +30,22 @@
    console.dir('f1:');
    console.dir(f1);
    console.dir('f');
-   console.dir(f);
+
+    // let  time=new Date().toLocaleString('chinese', { hour12: false })
+    // let  time=new Date().toLocaleString('chinese', { hour12: false }).match(/\d/g).join('');
+    function getTime() {
+        let  time=new Date().toLocaleString('chinese', { hour12: false }).match(/\d/g);
+        if(time.length<14){
+            time.splice(4,0,'0');
+        }
+        return time.join('');
+    }
+
+    console.log(getTime());
 
 
+
+    // console.log(time);
 </script>
 
 </body>
