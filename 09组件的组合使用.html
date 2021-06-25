@@ -36,7 +36,7 @@
             return (
                <div>
                    <h1>TODO LIST</h1>
-                   <Add todoAdd={this.todoAdd}/>
+                   <Add todoAdd={this.todoAdd} todoNum={this.state.todoArr.length}/>
                    <ShowList  todoArr={this.state.todoArr}  />
 
                </div>
@@ -67,11 +67,11 @@
 
         render() {
             // console.log(this)
-            const {todoAdd}=this.props;
+            const {todoAdd,todoNum}=this.props;
             return (
                <div>
                    <input type="text" ref={this.myRef}/>
-                   <button onClick={this.getUserInput}>Add#100</button>
+                   <button onClick={this.getUserInput}>Add#{todoNum}</button>
                </div>
 
 
