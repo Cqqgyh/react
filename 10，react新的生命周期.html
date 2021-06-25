@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    引入react-->
+    <!--    操作虚拟dom-->
+    <script src="./JS/新版本/react.development.js"></script>
+    <!--    虚拟dom转化成真实dom-->
+    <script src="./JS/新版本/react-dom.development.js"></script>
+    <!-- React的语法转换，将ES6转ES5，JSX转JS -->
+    <script src="./JS/新版本/babel.min.js"></script>
+    <!-- React对prop-types进行管理 -->
+    <script src="./JS/新版本/prop-types.js"></script>
+</head>
+<body>
+<div id="wrap"></div>
+<script type="text/babel">
+
+    class App extends React.Component {
+        state={
+            data:'demo'
+        }
+        componentDidMount() {
+            console.log('--componentDidMount--')
+            setTimeout(() => {
+                this.setState({
+                    data:'change'
+                })
+            },1000)
+        }
+
+        static getDerivedStateFromProps(props,state){
+            console.log('--getDerivedStateFromProps--',props,state)
+            return props
+        }
+        allDate = () => {
+            const arr=[]
+            for (let key in this.state) {
+               arr.push(<li key={key} children="123">{this.state[key]}</li>)
+                console.log(arr,'-------------------');
+            }
+            return arr;
+        }
+
+
+
+        render() {
+            console.log('--render--')
+
+            return (
+               <div>
+                   <h1>{this.allDate()}</h1>
+               </div>
+            )
+
+        }
+
+    }
+
+
+
+
+
+    ReactDOM.render(<App name='small'/>,document.getElementById('wrap'))
+
+
+</script>
+</body>
+</html>
