@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>理想视口</title>
+    <!-- width = device-width的意思是：布局视口，你的宽度能不能等于设备独立像素的宽度 -->
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <div>开启理想视口的宽度与不开启的宽度不一样</div>
+    <script type="text/javascript">
+        console.log('该设备的布局视口宽度为', document.documentElement.clientWidth)
+        console.log('该设备的视觉视口宽度为', window.innerWidth)
+    </script>
+</body>
+
+</html>
