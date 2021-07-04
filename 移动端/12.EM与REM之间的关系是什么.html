@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EM与REM之间的关系是什么</title>
+    <style>
+        html,
+        body {
+            font-size: 20px;
+        }
+
+        #demo1 {
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+            font-size: 40px;
+        }
+
+        /* 如果是rem，它是按html、body中的字体大小进行比率计算，
+        而如果是em，则按它的上级元素字体大小进行比率计算 */
+        #demo2 {
+            width: 10rem;
+            height: 10rem;
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo1">
+        <div id="demo2">
+        </div>
+    </div>
+
+</body>
+
+</html>

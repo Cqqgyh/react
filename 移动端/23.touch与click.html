@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 如果没有设置理想视口，也就是viewport，那么就会出现300毫秒的延时问题 -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>touch与click</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #demo {
+            width: 100%;
+            height: 300px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        const demo = document.getElementById('demo');
+
+        let time;
+
+        // 移动端的事件为先，click事件为后，它是优先级的
+        demo.addEventListener('click', () => {
+            console.log('click->', Date.now() - time)
+        })
+
+        demo.addEventListener('touchstart', () => {
+            time = Date.now();
+            console.log('touchstart')
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>移动端缩放</title>
+    <style>
+        img {
+            width: 200px;
+            height: 150px;
+        }
+
+        #info {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./imgs/1.jpg" alt="">
+        <img src="./imgs/2.jpg" alt="">
+        <img src="./imgs/3.jpg" alt="">
+        <img src="./imgs/4.jpg" alt="">
+    </div>
+    <div id="info"></div>
+    <script type="text/javascript">
+        const info = document.getElementById('info')
+        info.innerHTML = '布局视口宽度：' + document.documentElement.clientWidth + '<br/>'
+        info.innerHTML += '视觉视口宽度：' + window.innerWidth
+
+        // 在移动端，onresize监测的是布局视口的变化
+        // 布局视口在移动端是不变的，所以注意以下代码的执行
+        // 所以你将无法监听到缩放操作
+        window.onresize = function () {
+            alert('缩放了？')
+        }
+
+        // 实时获取尺寸利用以下方法进行处理
+        setInterval(() => {
+            info.innerHTML = '布局视口宽度：' + document.documentElement.clientWidth + '<br/>'
+            info.innerHTML += '视觉视口宽度：' + window.innerWidth
+        }, 200)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>为什么要适配</title>
+    <meta name="viewport" content="width=375">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            width: 345px;
+            height: 150px;
+            background-color: #8FAADC;
+            margin: 0 auto;
+            margin-top: 15px;
+            /* 适配问题并不是所有的内容都想参与，比如说边框 */
+            /* 特别是移动端的字体一般是不参与适配的 */
+            border: 1px solid black;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 注意不同的设备的上左右边距 -->
+    <div id="demo">文本内容</div>
+</body>
+
+</html>
